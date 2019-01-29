@@ -15,4 +15,7 @@ public class FuelProjectController {
 		model.addAttribute("nn", name);
 		return "index";
 	}
+	
+	//add model
+	
 }
