@@ -1,4 +1,4 @@
-package FuelProject.model;
+package com.abulzahab.FuelProject.model;
 
 import java.util.List;
 
@@ -6,12 +6,19 @@ import java.util.List;
 public class Citizen extends User {
 	
 	
-private Address cityAddress;
-	
+	private String idNumber;
+	private Address cityAddress;
 	private String street;
 	private String building; 
 	private List<FuelRequest> submittedFuelRequests;
 	
+	
+	public String getIdNumber() {
+		return idNumber;
+	}
+	public void setIdNumber(String idNumber) {
+		this.idNumber = idNumber;
+	}
 	
 	public Address getCityAddress() {
 		return cityAddress;

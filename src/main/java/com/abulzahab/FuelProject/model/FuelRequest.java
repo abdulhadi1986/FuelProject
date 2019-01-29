@@ -1,4 +1,4 @@
-package FuelProject.model;
+package com.abulzahab.FuelProject.model;
 
 import java.time.LocalDate;
 

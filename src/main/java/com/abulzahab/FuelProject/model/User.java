@@ -1,8 +1,6 @@
-package FuelProject.model;
+package com.abulzahab.FuelProject.model;
 
 public class User {
-	
-	
 	private String nationalNo;
 	private String firstName;
 	private String lastName;
@@ -52,11 +50,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
-	
-	
 	
 
 }
