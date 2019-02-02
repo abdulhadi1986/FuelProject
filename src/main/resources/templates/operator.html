@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<title>Station</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/addoperator)" name = "operator"  method="POST">
+
+<label>User Name: </label>
+        <input type="text" name ="UserName" placeholder="UserName">
+        <br>
+        
+        
+<label>Password: </label>
+        <input type="password" name ="password" placeholder="password">
+        <br>
+        
+        
+<label>National No: </label>
+        <input type="text" name ="nationalNo" placeholder="nationalNo">
+        <br>
+        
+         <select name="fuelStation">
+              <option th:each="station : ${addsta}" th:value="${station.stationId}" th:text="${station.stationName}"></option>
+         </select>
+<br>
+
+<input type="submit" value="send">
+</form>
+        
+</body>
+</html>
+        

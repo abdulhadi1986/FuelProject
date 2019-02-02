@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<title>Station</title>
+</head>
+<body>
+
+ <form action="#" th:action="@{/addstation)" name = "fuelstation"  method="POST">
+
+        <label>Station ID: </label>
+        <input type="text" name ="stationId" placeholder="Station ID">
+        <br>
+        
+        <label>Station Name: </label>
+        <input type="text" name ="stationName" placeholder="Station Name">
+        <br>
+        
+         
+        <label>Station TelNom: </label>
+        <input type="text" name ="telNo" placeholder="Station Tel Num">
+        <br>
+        
+        <label>Tank Capacity: </label>
+        <input type="text" name ="tankCapacity" placeholder="tankCapacity">
+        <br>
+        
+        <label>Operator: </label>
+        <input type="text" name ="operator" placeholder="operator">
+        <br>
+        
+        <select name="cityAddress">
+              <option th:each="address : ${adds}" th:value="${address.addressId}" th:text="${address.city+' - ' + address.area}"></option>
+         </select>
+       
+        
+        
+        	
+     <input type="submit" value="send">  
+   </form>     
+</body>
+</html>

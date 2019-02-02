@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<title>Station</title>
+</head>
+<body>
+
+
+<form action="#" th:action="@{/addvehicle)" name = "distributionVehicle"  method="POST">
+
+<label>Vehicle ID: </label>
+        <input type="text" name ="vehicleId" placeholder="ID">
+        <br>
+        
+        
+ <label>Plate Number: </label>
+        <input type="text" name ="plateNo" placeholder="plateNo">
+        <br>
+
+ <label>Tank Capacity: </label>
+        <input type="text" name ="tankCapacity" placeholder="tankCapacity">
+        <br>
+     
+  
+ <label>Driver Name: </label>
+        <input type="text" name ="driverName" placeholder="Driver Name">
+        <br>  
+ 
+ 
+  <label>Driver MobileNo: </label>
+        <input type="text" name ="driverMobileNo" placeholder="Driver Number">
+        <br>                        
+  
+  
+  <select name="fuelStation">
+              <option th:each="station : ${addsta}" th:value="${station.stationId}" th:text="${station.stationName}"></option>
+         </select>
+        
+         <br>  
+  
+    <input type="submit" value="send">  
+   </form>   
+  </body>
+</html>       
+       
+       
