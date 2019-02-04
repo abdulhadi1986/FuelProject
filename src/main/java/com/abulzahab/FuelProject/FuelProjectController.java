@@ -9,14 +9,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.abulzahab.FuelProject.model.Address;
 import com.abulzahab.FuelProject.model.Citizen;
+import com.abulzahab.FuelProject.model.DistributionVehicle;
+import com.abulzahab.FuelProject.model.FuelStation;
+import com.abulzahab.FuelProject.model.Operator;
 import com.abulzahab.FuelProject.services.AddressService;
 import com.abulzahab.FuelProject.services.CitizenService;
+import com.abulzahab.FuelProject.services.OperatorService;
+import com.abulzahab.FuelProject.services.StationService;
+import com.abulzahab.FuelProject.services.VehicleService;
+
+
 
 @Controller
 public class FuelProjectController {
 	
 	List<Address> addresses = AddressService.getAddresses();
-
+    List<FuelStation> stations = StationService.getAllStation();
+    
+    		
+    		
 	@RequestMapping(value = {"/","/index","/home",""} , method = RequestMethod.GET)
 	public String getHome(Model model) {
 		String name = "Abdulrahman";
@@ -24,6 +35,9 @@ public class FuelProjectController {
 		model.addAttribute("nn", name);
 		return "index";
 	}
+	
+	
+	
 	
 	@RequestMapping (value = "/register" , method = RequestMethod.GET)
 	public String getRegistrationForm(Model model) {
@@ -38,5 +52,74 @@ public class FuelProjectController {
 		return "success";
 	}
 	
+	
+	
+	
+//---------------------------------------------------------------
+	
+	
+	
+	@RequestMapping (value = "/station" , method = RequestMethod.GET)
+	public String getAddStation(Model model) {
+		model.addAttribute("adds", addresses);
+		
+		return "station";
+	
+	}
+	
+	
+	@RequestMapping(value = "/addstation" , method = RequestMethod.POST) 
+	public String addStation(FuelStation station) {
+		StationService.allStation.add(station);
+		
+		
+		return "success";
+		
+	}
+		
+	
+	
+	//----------------------------------------------------------
+	
+	
+	@RequestMapping (value ="/operator" , method = RequestMethod.GET)
+	public String getRegisterOperator(Model model) {
+		model.addAttribute("addsta", stations);
+		
+		
+		return "operator";
+	}
+		
+		
+	@RequestMapping (value ="/addoperator" , method = RequestMethod.POST)
+	public String addOperator(Operator operator) {
+		OperatorService.allOperator.add(operator);
+		
+		
+	return "success";	
+	}
+	
+	
+	
+	//-----------------------------------------------------------------
+	
+	@RequestMapping (value ="/vehicle" , method = RequestMethod.GET)
+	public String getaddvehicle(Model model) {
+		model.addAttribute("addsta", stations);
+		
+		
+		
+		
+		return "vehicle";
+	}
+	
+	
+	@RequestMapping (value ="/addvehicle" , method = RequestMethod.POST)
+	public String addVehicle (DistributionVehicle vehicle) {
+	VehicleService.allVehicles.add(vehicle);
+	
+		
+		return "success";
+	}
 	
 }
