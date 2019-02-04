@@ -5,7 +5,7 @@
 </head>
 <body>
 
- <form action="#" th:action="@{/addstation)" name = "fuelstation"  method="POST">
+ <form action="#" th:action="@{/addstation}" name = "fuelstation"  method="POST">
 
         <label>Station ID: </label>
         <input type="text" name ="stationId" placeholder="Station ID">
@@ -24,11 +24,11 @@
         <input type="text" name ="tankCapacity" placeholder="tankCapacity">
         <br>
         
-        <label>Operator: </label>
+       <!--  <label>Operator: </label>
         <input type="text" name ="operator" placeholder="operator">
-        <br>
+        <br> -->
         
-        <select name="cityAddress">
+        <select name="addressId">
               <option th:each="address : ${adds}" th:value="${address.addressId}" th:text="${address.city+' - ' + address.area}"></option>
          </select>
        

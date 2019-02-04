@@ -77,6 +77,13 @@ public class FuelRequest {
 	public void setDistributionVehicle(DistributionVehicle distributionVehicle) {
 		this.distributionVehicle = distributionVehicle;
 	}
+	@Override
+	public String toString() {
+		return "FuelRequest [RequestId=" + RequestId + ", amount=" + amount + ", fuelStation=" + fuelStation
+				+ ", submitionDate=" + submitionDate + ", preferedDeliveryDate=" + preferedDeliveryDate
+				+ ", approvedBy=" + approvedBy + ", Status=" + Status + ", approved=" + approved + ", comments="
+				+ comments + ", distributionVehicle=" + distributionVehicle + "]";
+	}
 	
 	
 	

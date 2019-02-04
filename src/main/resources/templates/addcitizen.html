@@ -29,7 +29,8 @@
         <label>building</label>
         <input type="text" name ="building" placeholder="building">
         <br>
-         <select name="cityAddress">
+         
+         <select name="addId">
 
               <option th:each="address : ${adds}" th:value="${address.addressId}" th:text="${address.city +' - ' + address.area}"></option>
          </select>

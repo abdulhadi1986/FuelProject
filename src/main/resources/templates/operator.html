@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form action="#" th:action="@{/addoperator)" name = "operator"  method="POST">
+<form action="#" th:action="@{/addoperator}" name = "operator"  method="POST">
 
 <label>User Name: </label>
         <input type="text" name ="UserName" placeholder="UserName">
@@ -21,7 +21,7 @@
         <input type="text" name ="nationalNo" placeholder="nationalNo">
         <br>
         
-         <select name="fuelStation">
+         <select name="stationId">
               <option th:each="station : ${addsta}" th:value="${station.stationId}" th:text="${station.stationName}"></option>
          </select>
 <br>

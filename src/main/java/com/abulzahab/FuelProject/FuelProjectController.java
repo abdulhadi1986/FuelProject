@@ -6,15 +6,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.abulzahab.FuelProject.model.Address;
 import com.abulzahab.FuelProject.model.Citizen;
 import com.abulzahab.FuelProject.model.DistributionVehicle;
+import com.abulzahab.FuelProject.model.FuelRequest;
 import com.abulzahab.FuelProject.model.FuelStation;
 import com.abulzahab.FuelProject.model.Operator;
 import com.abulzahab.FuelProject.services.AddressService;
 import com.abulzahab.FuelProject.services.CitizenService;
 import com.abulzahab.FuelProject.services.OperatorService;
+import com.abulzahab.FuelProject.services.RequestService;
 import com.abulzahab.FuelProject.services.StationService;
 import com.abulzahab.FuelProject.services.VehicleService;
 
@@ -25,7 +28,7 @@ public class FuelProjectController {
 	
 	List<Address> addresses = AddressService.getAddresses();
     List<FuelStation> stations = StationService.getAllStation();
-    
+    List<FuelRequest> requests = RequestService.getAllRequests();
     		
     		
 	@RequestMapping(value = {"/","/index","/home",""} , method = RequestMethod.GET)
@@ -47,6 +50,7 @@ public class FuelProjectController {
 	
 	@RequestMapping (value = "/registercitizen" , method = RequestMethod.POST)
 	public String addCitizen(Citizen citizen) {
+		
 		CitizenService.allCitizens.add(citizen);
 		
 		return "success";
@@ -95,7 +99,7 @@ public class FuelProjectController {
 	public String addOperator(Operator operator) {
 		OperatorService.allOperator.add(operator);
 		
-		
+		System.out.println(OperatorService.allOperator);
 	return "success";	
 	}
 	
@@ -107,9 +111,6 @@ public class FuelProjectController {
 	public String getaddvehicle(Model model) {
 		model.addAttribute("addsta", stations);
 		
-		
-		
-		
 		return "vehicle";
 	}
 	
@@ -117,9 +118,20 @@ public class FuelProjectController {
 	@RequestMapping (value ="/addvehicle" , method = RequestMethod.POST)
 	public String addVehicle (DistributionVehicle vehicle) {
 	VehicleService.allVehicles.add(vehicle);
-	
+	System.out.println(VehicleService.allVehicles);
 		
 		return "success";
+	}
+	
+	//-----------------------------------
+	
+	@RequestMapping (value="/operatorhome" , method = RequestMethod.GET)
+	public String getRequests(Model model, 
+							@RequestParam(value="stId", required=false, defaultValue="0")	int stationId ) {
+		
+		
+		model.addAttribute("allRequests", requests);
+		return "operatorhome";
 	}
 	
 }

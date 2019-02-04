@@ -6,7 +6,7 @@
 <body>
 
 
-<form action="#" th:action="@{/addvehicle)" name = "distributionVehicle"  method="POST">
+<form action="#" th:action="@{/addvehicle}" name = "distributionVehicle"  method="POST">
 
 <label>Vehicle ID: </label>
         <input type="text" name ="vehicleId" placeholder="ID">
@@ -32,7 +32,7 @@
         <br>                        
   
   
-  <select name="fuelStation">
+  <select name="stationId">
               <option th:each="station : ${addsta}" th:value="${station.stationId}" th:text="${station.stationName}"></option>
          </select>
         
