@@ -134,4 +134,26 @@ public class FuelProjectController {
 		return "operatorhome";
 	}
 	
+	
+	
+	//-------------------------------------
+	
+	@RequestMapping(value ="/fuelrequest" , method = RequestMethod.GET)
+	public String getFuelRequest(Model model) {
+		model.addAttribute("addsta", stations);
+		model.addAttribute("adds", addresses);
+		return"fuelrequest";
+	}
+	
+	
+	
+	@RequestMapping( value="/addfuelrequest" , method = RequestMethod.POST)
+	public String addFuelRequest(FuelRequest request) {
+		
+		RequestService.allRequests.add(request);
+		
+		
+		return"success";
+	}
+	
 }

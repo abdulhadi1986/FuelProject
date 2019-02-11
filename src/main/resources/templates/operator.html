@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://wwww.thymeleaf.org">
 <head>
-<title>Station</title>
+<title>operator</title>
 </head>
 <body>
 
 <form action="#" th:action="@{/addoperator}" name = "operator"  method="POST">
+
+<label>First Name: </label>
+        <input type="text" name ="firstName" placeholder="FirstName">
+        <br>
+
+
+<label>Last Name: </label>
+        <input type="text" name ="lastName" placeholder="LastName">
+        <br>
+        
+<label>Mobile Number: </label>
+        <input type="text" name ="mobileNo" placeholder="Mobil Number">
+        <br>
 
 <label>User Name: </label>
         <input type="text" name ="UserName" placeholder="UserName">

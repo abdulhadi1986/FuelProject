@@ -64,6 +64,14 @@ public class FuelStation {
 	
 	
 	
+		
+
+	public FuelStation(int id, String name) {
+	this.setStationId(id);
+	this.setStationName(name);
+	
+	}
+	
 	
 	
 	

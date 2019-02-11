@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+
+<title>FuelRequest</title>
+</head>
+<body>
+ <form action="#" th:action="@{/addfuelrequest}" name = "citizen"  method="POST">
+ 
+ <label>First name</label>
+<input type="text" name="firstName" placeholder="FirstName">
+<br>
+
+ 
+ <label>Last name</label>
+<input type="text" name="lasttName" placeholder="LasttName">
+<br>
+
+ <label>National number</label>
+<input type="text" name="nationalNo" placeholder="National number">
+<br>
+
+
+ <label>Number of Id</label>
+<input type="text" name="idNumber" placeholder="ID Number">
+<br>
+
+
+ <label>Mobile number</label>
+<input type="text" name="mobileNo" placeholder="moblie number">
+<br>
+
+
+ <label>Email</label>
+<input type="text" name="email" placeholder="exampel@exampel">
+<br>
+
+  <select name="cityAddress">
+              <option th:each="address : ${adds}" th:value="${address.addressId}" th:text="${address.city+' - ' + address.area}"></option>
+         </select>
+         
+  <br>       
+         
+ <label>Street</label>
+<input type="text" name="street" placeholder="Street">
+<br>
+
+
+ <label>building</label>
+<input type="text" name="building" placeholder="building">
+<br>
+
+</form>
+
+<form action="#" th:action="@{/addfuelrequest}" name="fuelrequest" method=post>
+
+<label>Amount</label>
+<input type="text" name="amount" placeholder="Amount">
+<br>
+
+         <select name="stationId">
+              <option th:each="station : ${addsta}" th:value="${station.stationId}" th:text="${station.stationName}"></option>
+         </select>
+
+
+<br>
+ 
+ <label>Date of request </label>
+ <input type="date" name="submitionDate" placeholder="Date">
+ 
+</form>
+
+ <input type="submit" value="send"> 
+
+
+</body>
+</html>
