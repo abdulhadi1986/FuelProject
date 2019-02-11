@@ -13,6 +13,7 @@ public class FuelStation {
 	private Operator operator;
 	private List<DistributionVehicle> distributionVehicles;
 	private List<FuelRequest> assignedRequests;
+	
 	public int getStationId() {
 		return stationId;
 	}
@@ -63,12 +64,15 @@ public class FuelStation {
 	}
 	
 	
-	
+	public FuelStation() {
+		
+	}
 		
 
-	public FuelStation(int id, String name) {
+	public FuelStation(int id, String name, Address address) {
 	this.setStationId(id);
 	this.setStationName(name);
+	this.setCityAddress(address);
 	
 	}
 	

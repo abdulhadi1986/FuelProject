@@ -1,0 +1,7 @@
+TODO: 
+- add station to the operator
+- method to delete operator 
+- method to delete station
+- method to delete vehicle 
+- method to call when approve a request
+- method to call when assigning a request to a vehicle 

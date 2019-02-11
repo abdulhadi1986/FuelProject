@@ -17,6 +17,16 @@ public class FuelRequest {
 	private boolean approved;
 	private String comments;
 	private DistributionVehicle distributionVehicle;
+	private Citizen submittedBy;
+	
+	public void setSubmittedBy(Citizen citizen) {
+		this.submittedBy = citizen; 
+	}
+	
+	public Citizen getSubmittedBy() {
+		return submittedBy;
+	}
+	
 	public int getRequestId() {
 		return RequestId;
 	}

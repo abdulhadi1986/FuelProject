@@ -1,5 +1,7 @@
 package com.abulzahab.FuelProject;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -29,7 +31,9 @@ public class FuelProjectController {
 	List<Address> addresses = AddressService.getAddresses();
     List<FuelStation> stations = StationService.getAllStation();
     List<FuelRequest> requests = RequestService.getAllRequests();
-    		
+    
+    Citizen citizen;
+    Operator operator;
     		
 	@RequestMapping(value = {"/","/index","/home",""} , method = RequestMethod.GET)
 	public String getHome(Model model) {
@@ -51,6 +55,9 @@ public class FuelProjectController {
 	@RequestMapping (value = "/registercitizen" , method = RequestMethod.POST)
 	public String addCitizen(Citizen citizen) {
 		
+		citizen.setUserName(citizen.getNationalNo());
+		citizen.setPassword(citizen.getIdNumber());
+		citizen = citizen;
 		CitizenService.allCitizens.add(citizen);
 		
 		return "success";
@@ -97,6 +104,9 @@ public class FuelProjectController {
 		
 	@RequestMapping (value ="/addoperator" , method = RequestMethod.POST)
 	public String addOperator(Operator operator) {
+		
+		operator = operator;
+		
 		OperatorService.allOperator.add(operator);
 		
 		System.out.println(OperatorService.allOperator);
@@ -148,7 +158,15 @@ public class FuelProjectController {
 	
 	
 	@RequestMapping( value="/addfuelrequest" , method = RequestMethod.POST)
-	public String addFuelRequest(FuelRequest request) {
+	public String addFuelRequest(FuelRequest request, int stationId) {
+		
+		for (int i=1; i<StationService.allStation.size(); i++) {
+			if(StationService.allStation.get(i).getStationId() == stationId) {
+				request.setFuelStation(StationService.allStation.get(i));
+			}
+		}
+		request.setSubmitionDate(LocalDate.now());
+		request.setSubmittedBy(citizen);
 		
 		RequestService.allRequests.add(request);
 		
