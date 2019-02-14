@@ -28,6 +28,9 @@
         <input type="text" name ="operator" placeholder="operator">
         <br> -->
         
+        
+         <label>Choose the address </label>
+         <br>
         <select name="addressId">
               <option th:each="address : ${adds}" th:value="${address.addressId}" th:text="${address.city+' - ' + address.area}"></option>
          </select>

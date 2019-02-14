@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<title>Station</title>
+</head>
+<body>
+	
+<form action="#" th:action="@{/deleted}" name = "operator"  method="POST">
+
+
+ <select name="alloperator">
+              <option th:each="operator : ${operators}" th:value="${operator}" th:text="${operator}"></option>
+         </select>
+       
+
+ <input type="submit" value="send">
+	
+</form>
+</body>
+</html>

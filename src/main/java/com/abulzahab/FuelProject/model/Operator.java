@@ -7,6 +7,11 @@ import java.util.List;
 public class Operator extends User {
 
 	
+	@Override
+	public String toString() {
+		return "Operator [fuelStation=" + fuelStation + ", approvedFuelRequests=" + approvedFuelRequests + "]";
+	}
+
 	private FuelStation fuelStation; 
 	
 	private List<FuelRequest> approvedFuelRequests;

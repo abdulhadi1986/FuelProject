@@ -34,6 +34,9 @@
         <input type="text" name ="nationalNo" placeholder="nationalNo">
         <br>
         
+        
+         <label>Choose the station </label>
+         <br>
          <select name="stationId">
               <option th:each="station : ${addsta}" th:value="${station.stationId}" th:text="${station.stationName}"></option>
          </select>

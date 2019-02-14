@@ -2,6 +2,7 @@ package com.abulzahab.FuelProject;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -101,10 +102,16 @@ public class FuelProjectController {
 		return "operator";
 	}
 		
+	
 		
 	@RequestMapping (value ="/addoperator" , method = RequestMethod.POST)
-	public String addOperator(Operator operator) {
-		
+	public String addOperator(Operator operator ,int stationId ) {
+		for(int i=0 ; i<StationService.allStation.size() ; i++) {
+			if(StationService.allStation.get(i).getStationId() == stationId) {
+				operator.setFuelStation(StationService.allStation.get(i));
+			}
+			
+		}
 		operator = operator;
 		
 		OperatorService.allOperator.add(operator);
@@ -138,10 +145,26 @@ public class FuelProjectController {
 	@RequestMapping (value="/operatorhome" , method = RequestMethod.GET)
 	public String getRequests(Model model, 
 							@RequestParam(value="stId", required=false, defaultValue="0")	int stationId ) {
+	List<FuelRequest> requestOfStation = new ArrayList<FuelRequest>();
 		
+		for(int i=0 ; i<StationService.allStation.size() ; i++) {
+			if(stationId == 0){
+				model.addAttribute("allRequests", requests);
+				return "operatorhome";
+			}
+			
+			else if(stationId == StationService.allStation.get(i).getStationId()) {
+				
+				requestOfStation.add((FuelRequest) RequestService.allRequests.get(i).getFuelStation().getAssignedRequests());
+				
+				model.addAttribute("allRequests", requestOfStation);
+				return "operatorhome";
+			}
+			
+		}
+		return "null";
 		
-		model.addAttribute("allRequests", requests);
-		return "operatorhome";
+	
 	}
 	
 	
@@ -160,7 +183,7 @@ public class FuelProjectController {
 	@RequestMapping( value="/addfuelrequest" , method = RequestMethod.POST)
 	public String addFuelRequest(FuelRequest request, int stationId) {
 		
-		for (int i=1; i<StationService.allStation.size(); i++) {
+		for (int i=0; i<StationService.allStation.size(); i++) {
 			if(StationService.allStation.get(i).getStationId() == stationId) {
 				request.setFuelStation(StationService.allStation.get(i));
 			}
@@ -173,5 +196,31 @@ public class FuelProjectController {
 		
 		return"success";
 	}
+	
+	
+	
+	//--------------------------------------
+
+	@RequestMapping(value = "/todelete" , method = RequestMethod.GET)
+	public String deleteOperator(Model model) {
+		model.addAttribute("operators", OperatorService.allOperator);
+		
+		
+		return "delete";
+		
+	}
+	
+	
+	@RequestMapping (value = "/deleted" , method = RequestMethod.POST)
+	public String toDeleteOperator(Operator operator) {
+		OperatorService.allOperator.remove(operator);
+		
+		
+		
+		
+		
+		return "success";
+	}
+	
 	
 }
